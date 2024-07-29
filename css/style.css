@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 350px;
+    height: 400px;
+    background-color: darkmagenta;
+    padding-top: 20px;
+    margin: 50px auto;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -10px 20px 15px 10px black;
+
+}
+
+
+
+label {
+
+    margin: 15px;
+    font-size: 22px;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+}
+
+
+
+.form-login {
+    width: 350px;
+    height: 400px;
+    background-color: cyan;
+    padding-top: 20px;
+    margin: 50px auto;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -10px 20px 15px 10px black;
+
+}
+
+h1 {
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+input {
+    text-align: center;
+
+    font-size: 16px;
+    font-family: fantasy;
+    padding: 8px;
+    display: block;
+    margin: 15px auto;
+    background-color: beige;
+    width: 180px;
+    border-radius: 8px;
+}
+
+input[type='button'] {
+    width: 100px;
+    margin-top: 20px;
+    font-size: 15px;
+    display: block;
+    background-color: rgb(169, 242, 169);
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 15px;
+    border-color: chartreuse;
+    border-style: unset;
+
+}
+
+input[type='button']:hover {
+    background-color: rgb(123, 206, 123);
+}
