@@ -1,0 +1,156 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(224, 224, 224);
+}
+
+.sideBar {
+    width: 12.5%;
+    background-color: rgb(95, 6, 95);
+    padding: 20px;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: whitesmoke;
+    overflow-y: auto;
+
+
+}
+
+.sideBar h4 {
+
+    color: whitesmoke;
+
+}
+
+.sideBar .nav-link {
+
+    display: block;
+    color: aquamarine;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.sideBar .nav-link.active,
+.sideBar .nav-link:hover {
+    background-color: rgba(195, 148, 241, 0.812);
+    color: white;
+
+}
+
+.content {
+    margin-left: 20px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    text-align: center;
+    background-color: rgb(244, 244, 244);
+    border: 1px solid rgb(67, 63, 63);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgb(63, 127, 154);
+    margin: 10px;
+    width: calc(30%-20px);
+    display: inline-block;
+    vertical-align: top;
+    height: 300px;
+
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+
+}
+
+.card-text {
+    margin-bottom: 15px;
+}
+
+
+
+.btn-danger {
+    display: inline-block;
+    /* Muestra los botones como elementos en línea de bloque */
+    padding: 10px 15px;
+    /* Añade un relleno interno de 10px en la parte superior e inferior y 15px en los lados */
+    color: #fff;
+    /* Establece el color del texto en blanco */
+    background-color: #FB2A20;
+    /* Establece el color de fondo azul */
+    text-decoration: none;
+    /* Elimina el subrayado de los botones */
+    border-radius: 4px;
+    /* Redondea las esquinas de los botones */
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #FE6D66;
+    /* Establece un color de fondo más oscuro cuando el botón se desplaza sobre él */
+}
+
+.btn-success {
+    display: inline-block;
+    /* Muestra los botones como elementos en línea de bloque */
+    padding: 10px 15px;
+    /* Añade un relleno interno de 10px en la parte superior e inferior y 15px en los lados */
+    color: #fff;
+    /* Establece el color del texto en blanco */
+    background-color: #50BF07;
+    /* Establece el color de fondo azul */
+    text-decoration: none;
+    /* Elimina el subrayado de los botones */
+    border-radius: 4px;
+    /* Redondea las esquinas de los botones */
+    cursor: pointer;
+}
+
+.margin {
+    margin-left: 2%;
+}
+
+.btn-success:hover {
+    background-color: #9AD672;
+    /* Establece un color de fondo más oscuro cuando el botón se desplaza sobre él */
+}
+
+h3 {
+    font-weight: bold;
+    margin-top: 12.5%;
+}
+
+
+@media(max-width: 768px) {
+    .sideBar {
+        width: 40%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 0;
+    }
+
+    .card {
+        width: 100%;
+
+        height: 220px;
+    }
+
+
+}
