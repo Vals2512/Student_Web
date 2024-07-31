@@ -18,10 +18,12 @@ document.getElementById('button-student').addEventListener('click', function (ev
 document.getElementById('button-subject').addEventListener('click', function (event) {
     event.preventDefault(); /* Evita el comportamiento predeterminado */
 
+
 });
 
 document.getElementById('button-user').addEventListener('click', function (event) {
     event.preventDefault(); /* Evita el comportamiento predeterminado */
+    loadUsers();
 
 });
 
@@ -149,9 +151,11 @@ function loadStudents() {
             })
         })
         .catch(error => console.error('Error:', error));
+    
+    
 }
 
-loadStudents();
+
 
 function cleanContent() {
     const content = document.getElementById('content');
@@ -171,6 +175,123 @@ function deleteStudentByCode(code) {
         })
         .then(data => {
             alert("Student deleted");
+            cleanContent();
+            loadStudents();
+        })
+        .catch(error => {
+            console.error('Ocurrió el siguiente error con la operación: ', error);
+        });
+}
+
+function loadUsers() {
+    const content = document.getElementById('content');
+
+    const cardAdd = document.createElement('div');
+    cardAdd.className = 'card';
+
+    const cardBodyAdd = document.createElement('div');
+    cardBodyAdd.className = 'card-body';
+
+    const btnAdd = document.createElement('a');
+    btnAdd.className = 'btn btn-primary';
+    btnAdd.href = './addUser.html';
+
+    const imgAdd = document.createElement('img');
+    imgAdd.src = 'resource/icons/user.png';
+
+    imgAdd.style.width = '80px'; // Ancho de 80 píxeles
+    imgAdd.style.height = '80px';
+
+
+    const lblAdd = document.createElement('h3');
+    lblAdd.textContent = '¡Add a new user!';
+
+    /** Se agrega el ícono el botón */
+    btnAdd.appendChild(imgAdd);
+
+    /** Se agrega botón y título al cuerpo de la carta */
+    cardBodyAdd.appendChild(btnAdd);
+    cardBodyAdd.appendChild(lblAdd);
+
+    cardAdd.appendChild(cardBodyAdd);
+    content.appendChild(cardAdd);
+
+    fetch('http://localhost:8080/Student_Web_Project/rest/ManagementUser/getUsers')
+        .then(response => response.json())
+        .then((data) => {
+            const content = document.getElementById('content');
+            data.forEach(user => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                /** Se hace la creación de cada componente */
+                /** Creamos la sección de id */
+                const id = document.createElement('h2');
+                id.className = 'card-title';
+                id.textContent = ` User`;
+
+                /** Creamos la sección del nombre */
+                const name = document.createElement('p');
+                name.className = 'card-text';
+                name.textContent = `UserName: ${user.nameUser}`;
+
+                /** Creamos la sección de apellido */
+                const password = document.createElement('p');
+                password.className = 'card-text';
+                password.textContent = `Password: ***********`;
+
+
+                /* Creación de botones de eliminar */
+                const btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn-danger';
+                btnEliminar.id = `btn-delete-${user.nameUser}`;
+                btnEliminar.textContent = `Delete`;
+                btnEliminar.setAttribute('data-username', user.nameUser);
+
+                // Agregar event listener al botón
+                btnEliminar.addEventListener('click', function () {
+                    const username = this.getAttribute('data-username');
+                    deleteUserByUserName(username);
+                });
+
+
+                /** Agregamos los componentes al body */
+                cardBody.appendChild(id);
+                cardBody.appendChild(name);
+                cardBody.appendChild(password);
+
+
+                /* Agregamos el botón eliminar */
+                cardBody.appendChild(btnEliminar);
+
+
+                /** Agregamos el body al card */
+                card.appendChild(cardBody);
+
+                /** Agregamos el card al content */
+                content.appendChild(card);
+            })
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+function deleteUserByUserName(nameUser) {
+    let url = 'http://localhost:8080/Student_Web_Project/rest/ManagementUser/deleteUser?nameUser=' + nameUser;
+    fetch(url, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ocurrió un error en la respuesta del servidor: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert("User deleted");
             cleanContent();
             loadStudents();
         })
