@@ -156,6 +156,7 @@ function loadStudents() {
 
 }
 
+loadStudents();
 
 
 function cleanContent() {
@@ -417,13 +418,6 @@ function loadSubjects() {
         .catch(error => console.error('Error:', error));
 
 
-}
-
-
-
-function cleanContent() {
-    const content = document.getElementById('content');
-    content.innerHTML = "";
 }
 
 function deleteSubjectByCode(codeSubject) {

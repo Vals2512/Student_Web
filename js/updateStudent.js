@@ -15,7 +15,6 @@ function updateStudent() {
     let id = document.getElementById("input-id-student").value;
     let name = document.getElementById("input-name-student").value;
     let lastName = document.getElementById("input-lastName-student").value;
-    let code = document.getElementById("input-code-student").value;
     let career = document.getElementById("input-career-student").value;
     let email = document.getElementById("input-email-student").value;
     let studentData = {
