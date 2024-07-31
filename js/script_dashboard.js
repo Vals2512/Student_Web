@@ -112,7 +112,7 @@ function loadStudents() {
                 // Agregar event listener al botón
                 btnEliminar.addEventListener('click', function () {
                     const studentCode = this.getAttribute('data-code');
-                    deleteStudentByCode(studentCodeCode);
+                    deleteStudentByCode(studentCode);
                 });
 
                 /* Creación del botón de actualizar */
