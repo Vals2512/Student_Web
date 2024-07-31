@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.getElementById('button-student').addEventListener('click', function (event) {
     event.preventDefault(); /* Evita el comportamiento predeterminado */
+    loadStudents();
 
 });
 
@@ -39,7 +40,11 @@ function loadStudents() {
     btnAdd.href = './addStudent.html';
 
     const imgAdd = document.createElement('img');
-    imgAdd.src = 'resource/icons/agregar.png';
+    imgAdd.src = 'resource/icons/student.png';
+
+    imgAdd.style.width = '80px'; // Ancho de 80 píxeles
+    imgAdd.style.height = '80px';
+
 
     const lblAdd = document.createElement('h3');
     lblAdd.textContent = '¡Add a new student!';
@@ -114,7 +119,7 @@ function loadStudents() {
                 const btnActualizar = document.createElement('a');
                 btnActualizar.className = 'btn-success margin';
                 btnActualizar.id = `btn-delete-${student.code}`;
-                btnActualizar.textContent = `Actualizar`;
+                btnActualizar.textContent = `Update`;
 
                 // Agregar event listener al botón
                 btnActualizar.addEventListener('click', function () {
@@ -167,7 +172,7 @@ function deleteStudentByCode(code) {
         .then(data => {
             alert("Student deleted");
             cleanContent();
-            loadBooks();
+            loadStudents();
         })
         .catch(error => {
             console.error('Ocurrió el siguiente error con la operación: ', error);

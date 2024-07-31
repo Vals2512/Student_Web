@@ -11,7 +11,7 @@ body {
     background-color: rgb(95, 6, 95);
     padding: 20px;
     height: 100vh;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     color: whitesmoke;
@@ -44,7 +44,7 @@ body {
 }
 
 .content {
-    margin-left: 20px;
+    margin-left: 15%;
     padding: 20px;
     flex: 1;
     display: flex;
@@ -71,7 +71,7 @@ body {
 }
 
 .card-title {
-    font-size: 1.5em;
+    font-size: 1.25em;
     margin-bottom: 10px;
 
 }
@@ -80,33 +80,59 @@ body {
     margin-bottom: 15px;
 }
 
+.btn-primary {
+    display: inline-block;
+    /* Muestra los botones como elementos en línea de bloque */
+    padding: 10px 10px;
+    /* Añade un relleno interno de 10px en la parte superior e inferior y 15px en los lados */
+    color: #fff;
+    /* Establece el color del texto en blanco */
+    background-color: #8b289b;
+    /* Establece el color de fondo azul */
+    text-decoration: none;
+    /* Elimina el subrayado de los botones */
+    border-radius: 4px;
+    /* Redondea las esquinas de los botones */
 
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Establece un color de fondo más oscuro cuando el botón se desplaza sobre él */
+}
 
 .btn-danger {
     display: inline-block;
+    border: none;
     /* Muestra los botones como elementos en línea de bloque */
-    padding: 10px 15px;
+    padding: 10px 10px;
     /* Añade un relleno interno de 10px en la parte superior e inferior y 15px en los lados */
     color: #fff;
     /* Establece el color del texto en blanco */
     background-color: #FB2A20;
     /* Establece el color de fondo azul */
     text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
     /* Elimina el subrayado de los botones */
     border-radius: 4px;
     /* Redondea las esquinas de los botones */
     cursor: pointer;
+    font-weight: bold;
+    height: 38px;
+
 }
 
 .btn-danger:hover {
-    background-color: #FE6D66;
+    background-color: #83322e;
     /* Establece un color de fondo más oscuro cuando el botón se desplaza sobre él */
 }
 
 .btn-success {
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
     display: inline-block;
     /* Muestra los botones como elementos en línea de bloque */
-    padding: 10px 15px;
+    padding: 10px 10px;
     /* Añade un relleno interno de 10px en la parte superior e inferior y 15px en los lados */
     color: #fff;
     /* Establece el color del texto en blanco */
@@ -117,6 +143,7 @@ body {
     border-radius: 4px;
     /* Redondea las esquinas de los botones */
     cursor: pointer;
+
 }
 
 .margin {
@@ -124,7 +151,7 @@ body {
 }
 
 .btn-success:hover {
-    background-color: #9AD672;
+    background-color: #498d1c;
     /* Establece un color de fondo más oscuro cuando el botón se desplaza sobre él */
 }
 
