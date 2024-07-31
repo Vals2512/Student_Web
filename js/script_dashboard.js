@@ -17,6 +17,7 @@ document.getElementById('button-student').addEventListener('click', function (ev
 
 document.getElementById('button-subject').addEventListener('click', function (event) {
     event.preventDefault(); /* Evita el comportamiento predeterminado */
+    loadSubjects();
 
 
 });
@@ -151,8 +152,8 @@ function loadStudents() {
             })
         })
         .catch(error => console.error('Error:', error));
-    
-    
+
+
 }
 
 
@@ -294,6 +295,152 @@ function deleteUserByUserName(nameUser) {
             alert("User deleted");
             cleanContent();
             loadStudents();
+        })
+        .catch(error => {
+            console.error('Ocurrió el siguiente error con la operación: ', error);
+        });
+}
+
+function loadSubjects() {
+    const content = document.getElementById('content');
+
+    const cardAdd = document.createElement('div');
+    cardAdd.className = 'card';
+
+    const cardBodyAdd = document.createElement('div');
+    cardBodyAdd.className = 'card-body';
+
+    const btnAdd = document.createElement('a');
+    btnAdd.className = 'btn btn-primary';
+    btnAdd.href = './addSubject.html';
+
+    const imgAdd = document.createElement('img');
+    imgAdd.src = 'resource/icons/materia.png';
+
+    imgAdd.style.width = '80px'; // Ancho de 80 píxeles
+    imgAdd.style.height = '80px';
+
+
+    const lblAdd = document.createElement('h3');
+    lblAdd.textContent = '¡Add  a new subject!';
+
+    /** Se agrega el ícono el botón */
+    btnAdd.appendChild(imgAdd);
+
+    /** Se agrega botón y título al cuerpo de la carta */
+    cardBodyAdd.appendChild(btnAdd);
+    cardBodyAdd.appendChild(lblAdd);
+
+    cardAdd.appendChild(cardBodyAdd);
+    content.appendChild(cardAdd);
+
+    fetch('http://localhost:8080/Student_Web_Project/rest/ManagementSubject/getSubjects')
+        .then(response => response.json())
+        .then((data) => {
+            const content = document.getElementById('content');
+            data.forEach(subject => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                /** Se hace la creación de cada componente */
+                /** Creamos la sección de id */
+                const codeSubject = document.createElement('h2');
+                codeSubject.className = 'card-title';
+                codeSubject.textContent = `Code subject:${subject.codeSubject}`;
+
+                /** Creamos la sección del nombre */
+                const name = document.createElement('p');
+                name.className = 'card-text';
+                name.textContent = `Name: ${subject.name}`;
+
+                /** Creamos la sección de apellido */
+                const numberCredits = document.createElement('p');
+                numberCredits.className = 'card-text';
+                numberCredits.textContent = `Credit´s number: ${subject.numberCredits}`;
+
+
+
+                /** Sección del año de publicación */
+                const codeStudent = document.createElement('p');
+                codeStudent.className = 'card-text';
+                codeStudent.textContent = `Code student: ${subject.codeStudent}`;
+
+
+                /* Creación de botones de eliminar */
+                const btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn-danger';
+                btnEliminar.id = `btn-delete-${subject.codeSubject}`;
+                btnEliminar.textContent = `Delete`;
+                btnEliminar.setAttribute('data-code', subject.codeSubject);
+
+                // Agregar event listener al botón
+                btnEliminar.addEventListener('click', function () {
+                    const studentCode = this.getAttribute('data-code');
+                    deleteSubjectByCode(codeSubject);
+                });
+
+                /* Creación del botón de actualizar */
+                const btnActualizar = document.createElement('a');
+                btnActualizar.className = 'btn-success margin';
+                btnActualizar.id = `btn-delete-${subject.codeSubject}`;
+                btnActualizar.textContent = `Update`;
+
+                // Agregar event listener al botón
+                btnActualizar.addEventListener('click', function () {
+                    localStorage.setItem("studentData", JSON.stringify(subject));
+                    window.location.href = "./updateSubject.html";
+                });
+
+                /** Agregamos los componentes al body */
+                cardBody.appendChild(codeSubject);
+                cardBody.appendChild(name);
+                cardBody.appendChild(numberCredits);
+                cardBody.appendChild(codeStudent);
+
+
+                /* Agregamos el botón eliminar */
+                cardBody.appendChild(btnEliminar);
+
+                /* Agregamos el botón eliminar */
+                cardBody.appendChild(btnActualizar);
+
+                /** Agregamos el body al card */
+                card.appendChild(cardBody);
+
+                /** Agregamos el card al content */
+                content.appendChild(card);
+            })
+        })
+        .catch(error => console.error('Error:', error));
+
+
+}
+
+
+
+function cleanContent() {
+    const content = document.getElementById('content');
+    content.innerHTML = "";
+}
+
+function deleteSubjectByCode(codeSubject) {
+    let url = 'http://localhost:8080/Student_Web_Project/rest/ManagementSubject/deleteSubject?codeSubject=' + codeSubject;
+    fetch(url, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ocurrió un error en la respuesta del servidor: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert("Subject deleted");
+            cleanContent();
+            loadSubjects();
         })
         .catch(error => {
             console.error('Ocurrió el siguiente error con la operación: ', error);

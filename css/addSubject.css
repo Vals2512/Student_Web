@@ -1,3 +1,7 @@
+.card-title {
+    text-align: center;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@ body {
     /* Color de fondo lila claro */
 }
 
-.add-user {
+.add-subject {
     background-color: #f4f4f4;
     /* Color de fondo de la tarjeta */
     border: 1px solid #433f3f;
@@ -17,10 +21,11 @@ body {
     box-shadow: 0 4px 8px rgba(95, 6, 95, 0.2);
     padding: 40px;
     /* Aumentar el padding */
-    width: 50%;
+    width: 40%;
     /* Aumentar el ancho */
     max-width: 600px;
     /* Establecer un ancho máximo */
+    margin: 2 auto;
 }
 
 .card-title {
