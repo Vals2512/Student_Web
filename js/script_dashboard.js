@@ -124,7 +124,7 @@ function loadStudents() {
                 // Agregar event listener al botón
                 btnActualizar.addEventListener('click', function () {
                     localStorage.setItem("studentData", JSON.stringify(student));
-                    window.location.href = "./updatepage.html";
+                    window.location.href = "./updateStudent.html";
                 });
 
                 /** Agregamos los componentes al body */
