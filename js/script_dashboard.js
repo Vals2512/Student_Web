@@ -379,7 +379,7 @@ function loadSubjects() {
 
                 // Agregar event listener al botón
                 btnEliminar.addEventListener('click', function () {
-                    const studentCode = this.getAttribute('data-code');
+                    const codeSubject = this.getAttribute('data-code');
                     deleteSubjectByCode(codeSubject);
                 });
 
@@ -391,7 +391,7 @@ function loadSubjects() {
 
                 // Agregar event listener al botón
                 btnActualizar.addEventListener('click', function () {
-                    localStorage.setItem("studentData", JSON.stringify(subject));
+                    localStorage.setItem("subjectData", JSON.stringify(subject));
                     window.location.href = "./updateSubject.html";
                 });
 
